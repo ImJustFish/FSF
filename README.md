@@ -5,7 +5,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-brightgreen)
 ![CMake](https://img.shields.io/badge/Build-CMake-informational)
 
-## 📋 Tabla de Contenidos
+## 📋 Content table
 - [Description](#-description)
 - [Caracteristics](#-caracteristics)
 - [Requirements](#📋-requirements)
@@ -24,7 +24,7 @@
 
 **Fidel Save System (FSF)** is a C++ library for managing save files with integrated encryption. Designed specifically for video games and applications that require secure data safely.
 
-## ✨ Características
+## ✨ Caracteristics
 
 - ✅ **Basic encpryption** with custom seed (0-255)
 - ✅ **Multiple data types**: `int`, `float`, `string`, `vector`
