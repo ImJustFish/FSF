@@ -9,73 +9,65 @@
 > Asegúrate de cumplir con los términos de licencia de tu compilador.
 
 ## 📋 Tabla de Contenidos
-- [Descripción](#-descripción)
-- [Características](#✨-características)
-- [Requisitos](#📋-requisitos)
-- [Instalación](#📦-instalación)
-- [Uso](#🚀-uso)
+- [Description](#-description)
+- [Caracteristics](#-caracteristics)
+- [Requirements](#📋-requirements)
+- [Instalation](#📦-instalation)
+- [Use](#🚀-use)
 - [API](#📚-api)
-- [Ejemplos](#🎮-ejemplos)
-- [Construcción](#🔧-construcción)
-- [Pruebas](#🧪-pruebas)
-- [Contribuir](#🤝-contribuir)
-- [Licencia](#📄-licencia)
-- [Avisos Legales](#⚠️-avisos-legales)
+- [Examples](#🎮-examples)
+- [Construction](#🔧-construction)
+- [Tests](#🧪-Tests)
+- [Contribute](#🤝-contribute)
+- [License](#📄-license)
+- [Legal Warnings](#⚠️-legal-warnings)
 - [Autor](#👤-autor)
 
-## 📖 Descripción
+## 📖 Description
 
-**Fidel Save System (FSF)** es una biblioteca C++ ligera y multiplataforma para manejo de archivos de guardado con cifrado integrado. Diseñada específicamente para videojuegos y aplicaciones que requieren persistencia de datos segura.
-
-**Casos de uso ideales:**
-- Sistemas de guardado en videojuegos
-- Configuración de aplicaciones
-- Datos de usuario persistentes
-- Archivos de progreso cifrados
+**Fidel Save System (FSF)** is a C++ library for managing save files with integrated encryption. Designed specifically for video games and applications that require secure data safely.
 
 ## ✨ Características
 
-- ✅ **Cifrado básico** con semilla personalizable (0-255)
-- ✅ **Múltiples tipos de datos**: `int`, `float`, `string`, `vector`
-- ✅ **Gestión automática de archivos**
-- ✅ **Sin dependencias externas** - Solo C++17
-- ✅ **Diseño seguro ante excepciones**
-- ✅ **Multiplataforma**: Windows, Linux, macOS
-- ✅ **Interfaz simple e intuitiva**
-- ✅ **Modo header-only disponible**
+- ✅ **Basic encpryption** with custom seed (0-255)
+- ✅ **Multiple data types**: `int`, `float`, `string`, `vector`
+- ✅ **Automatic file management**
+- ✅ **No external dependencies** - C++17 only
+- ✅ **Exception Safe Design**
+- ✅ **Multiplataform**: Windows, Linux, macOS
 
-## 📋 Requisitos
+## 📋 Requirements
 
-### Compilador (uno de los siguientes):
-- **GCC** 7.0 o superior
-- **Clang** 5.0 o superior  
-- **MSVC** 2017 o superior (Visual Studio 15.7+)
+### Compiler (one of the following):
+- **GCC** 7.0+
+- **Clang** 5.0+  
+- **MSVC** 2017+ (Visual Studio 15.7+)
 
-### Estándar C++:
-- **C++17** o superior
+### Standar C++:
+- **C++17+**
 
-### Sistema (cualquiera):
+### System :
 - **Linux** (Ubuntu 18.04+, Fedora 30+, etc.)
 - **Windows** (7, 10, 11)
 - **macOS** (10.14+)
 
-### Herramientas recomendadas:
+### Recomendended tools:
 - **CMake** 3.15+
 - **Git** 2.20+
-- **Make** o **Ninja**
+- **Make** or **Ninja**
 
-## 📦 Instalación
+## 📦 Instalation
 
-### Método 1: CMake (Recomendado)
+### Método 1: CMake (Recomended)
 
 ```cmake
-# En tu CMakeLists.txt
+# In CMakeLists.txt
 cmake_minimum_required(VERSION 3.15)
 
-# Opción 1: Como subdirectorio
+# Option 1: as a subdirectory
 add_subdirectory(path/to/fsf)
-target_link_libraries(tu_proyecto fsf)
+target_link_libraries(your_project fsf)
 
-# Opción 2: Usando find_package (después de install)
+# Option 2: Using find_package (after install)
 find_package(fsf REQUIRED)
-target_link_libraries(tu_proyecto fsf::fsf)
+target_link_libraries(your_project fsf::fsf)
