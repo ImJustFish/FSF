@@ -5,9 +5,6 @@
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-brightgreen)
 ![CMake](https://img.shields.io/badge/Build-CMake-informational)
 
-> ⚠️ **IMPORTANTE LEGAL**: Este proyecto utiliza la biblioteca estándar de C++. 
-> Asegúrate de cumplir con los términos de licencia de tu compilador.
-
 ## 📋 Tabla de Contenidos
 - [Description](#-description)
 - [Caracteristics](#-caracteristics)
