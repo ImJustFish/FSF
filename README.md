@@ -46,7 +46,7 @@
 
 ## 📦 Instalation
 
-### Metod 1: CMake (Recomended)
+### Method 1: CMake (Recomended)
 
 ```cmake
 # In CMakeLists.txt
@@ -61,7 +61,7 @@ find_package(fsf REQUIRED)
 target_link_libraries(your_project fsf::fsf)
 ```
 
-### Metod 2: Use the dynamic library
+### Method 2: Use the dynamic library
 
 ```bash
 # Compile the project
