@@ -10,15 +10,6 @@
 - [Caracteristics](#-caracteristics)
 - [Requirements](#📋-requirements)
 - [Instalation](#📦-instalation)
-- [Use](#🚀-use)
-- [API](#📚-api)
-- [Examples](#🎮-examples)
-- [Construction](#🔧-construction)
-- [Tests](#🧪-Tests)
-- [Contribute](#🤝-contribute)
-- [License](#📄-license)
-- [Legal Warnings](#⚠️-legal-warnings)
-- [Autor](#👤-autor)
 
 ## 📖 Description
 
@@ -55,7 +46,7 @@
 
 ## 📦 Instalation
 
-### Método 1: CMake (Recomended)
+### Metod 1: CMake (Recomended)
 
 ```cmake
 # In CMakeLists.txt
@@ -68,3 +59,18 @@ target_link_libraries(your_project fsf)
 # Option 2: Using find_package (after install)
 find_package(fsf REQUIRED)
 target_link_libraries(your_project fsf::fsf)
+```
+
+### Merod 2: Use the dynamic library
+
+```bash
+# Compile the project
+cd /path/to/library/fsf
+mkdir build && cd build
+cmake ..
+
+#Windows
+cmake --build
+#Linux
+make
+```
