@@ -61,7 +61,7 @@ find_package(fsf REQUIRED)
 target_link_libraries(your_project fsf::fsf)
 ```
 
-### Merod 2: Use the dynamic library
+### Metod 2: Use the dynamic library
 
 ```bash
 # Compile the project
