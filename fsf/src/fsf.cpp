@@ -5,7 +5,7 @@
  * @version 0.5.0
  */
 
-#include "fsf.h"
+#include "../include/fsf/fsf.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -166,22 +166,20 @@ namespace fsf {
     /**
      * @brief Fsf class builder
      * @param path folder's path
-     * @param name object's name
      */
-    Fsf::Fsf(const std::string &path, const std::string &name)
-    : _path(path), _name(name), _seed(-1) {
+    Fsf::Fsf(const std::string &path)
+    : _path(path), _seed(-1) {
 
         if (!is_valid_path(path)) {
             std::cerr << "FSF::ERROR::Invalid path: " << path << std::endl;
             return;
         }
 
-        // Si ambos parámetros están vacíos, no hacer nada (objeto vacío)
-        if (path.empty() && name.empty()) {
+        if (path.empty()) {
             return;
         }
 
-        std::string filename ="../" + _path + _name + ".fsf", code;
+        std::string filename ="../" + _path + ".fsf", code;
         std::ifstream file(filename, std::ios::binary);
 
         if (file.is_open() && file.good()) {
@@ -209,17 +207,12 @@ namespace fsf {
             return false;
         }
 
-        if (_name.empty()) {
-            std::cerr << "FSF::ERROR::No name specified\n";
-            return false;
-        }
-
         if (_seed == -1) {
             std::cerr << "FSF::WARNING::No seed specified - using default seed 0\n";
             _seed = 0;
         }
 
-        std::string filename ="../" + _path + _name + ".fsf";
+        std::string filename ="../" + _path + ".fsf";
         std::string cosa;
 
         std::ifstream test_file(filename);
@@ -360,7 +353,7 @@ namespace fsf {
      * @param path folder's path
      * @param name object's name
      */
-    bool Fsf::set(const std::string &path, const std::string &name) {
+    bool Fsf::set(const std::string &path) {
         if (!is_valid_path(path)) {
             std::cerr << "FSF::ERROR::Invalid path: " << path << std::endl;
             return false;
@@ -371,7 +364,6 @@ namespace fsf {
         }
 
         _path = path;
-        _name = name;
 
         return _build();
     }
@@ -475,12 +467,12 @@ namespace fsf {
         }
 
         _file.close();
-        std::ofstream clear_file("../" + _path + _name + ".fsf", std::ios::binary | std::ios::trunc);
+        std::ofstream clear_file("../" + _path + ".fsf", std::ios::binary | std::ios::trunc);
         std::string sseed = std::to_string(_seed);
         clear_file<<sseed<<"\n";
         clear_file.close();
 
-        _file.open("../" + _path + _name + ".fsf", std::ios::out | std::ios::binary | std::ios::app);
+        _file.open("../" + _path + ".fsf", std::ios::out | std::ios::binary | std::ios::app);
 
         for (const auto& pair : _data._exist) {
             const std::string& index = pair.first;
@@ -601,13 +593,13 @@ namespace fsf {
             _file.close();
         }
 
-        std::ofstream clear_file("../" + _path + _name + ".fsf", std::ios::binary | std::ios::trunc);
+        std::ofstream clear_file("../" + _path + ".fsf", std::ios::binary | std::ios::trunc);
         if (clear_file.is_open()) {
             clear_file<<std::to_string(_seed);
             clear_file.close();
         }
 
-        _file.open("../" + _path + _name + ".fsf", std::ios::in | std::ios::out | std::ios::binary);
+        _file.open("../" + _path + ".fsf", std::ios::in | std::ios::out | std::ios::binary);
     }
 
     Fsf::~Fsf() {
