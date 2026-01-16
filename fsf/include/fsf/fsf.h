@@ -16,17 +16,21 @@
 #include <vector>
 #include <stdexcept>
 
-namespace fsf {
+#ifdef _WIN32
+    #ifdef FSF_BUILD_DLL
+        #define FSF_API __declspec(dllexport)
+    #else
+        #define FSF_API __declspec(dllimport)
+    #endif
+#else
+    #ifdef FSF_BUILD_DLL
+        #define FSF_API __attribute__((visibility("default")))
+    #else
+        #define FSF_API
+    #endif
+#endif
 
-    #if defined(_WIN32)
-    #ifdef FSF_EXPORTS
-    #define FSF_API __declspec(dllexport)
-    #else
-    #define FSF_API __declspec(dllimport)
-    #endif
-    #else
-    #define FSF_API __attribute__((visibility("default")))
-    #endif
+namespace fsf {
 
     struct FSF_API Data {
         std::map<std::string, long long> _lMap;
@@ -51,17 +55,17 @@ namespace fsf {
 
     class FSF_API Fsf {
     private:
-        std::string _path, _name;
-        short _seed;
-        std::fstream _file;
-        Data _data;
+        std::string _path;//File's Path
+        short _seed;//Seed
+        std::fstream _file;//File
+        Data _data;//Data storage
 
-        bool _build();
-        void _save_to_file();
+        bool _build();//Builds the file
+        void _save_to_file();//Saves the file
 
     public:
-        // Solo un constructor con parámetros por defecto
-        explicit Fsf(const std::string &path = "", const std::string &name = "");
+        
+        explicit Fsf(const std::string &path = "");
         ~Fsf();
 
         Fsf(const Fsf&) = delete;
@@ -70,23 +74,23 @@ namespace fsf {
         Fsf(Fsf&&) = default;
         Fsf& operator=(Fsf&&) = default;
 
-        bool set(const std::string &path, const std::string &name);
-        bool set_seed(short seed);
-        bool build();
+        bool set(const std::string &path);//Sets path
+        bool set_seed(short seed);//Sets seed
+        bool build();//Builds the file
 
-        void put_int(const std::string &index, long long val);
-        void put_float(const std::string &index, float val);
-        void put_str(const std::string &index, const std::string &val);
+        void put_int(const std::string &index, long long val);//Makes an integer
+        void put_float(const std::string &index, float val);//Makes a float
+        void put_str(const std::string &index, const std::string &val);//Makes a string
 
-        long long& get_int(const std::string &index);
-        std::string& get_str(const std::string &index);
-        float& get_float(const std::string &index);
+        long long& get_int(const std::string &index);//Gets an integer
+        std::string& get_str(const std::string &index);//Gets a string
+        float& get_float(const std::string &index);//Gets a float
 
-        bool contains(const std::string &index) const;
-        std::string get_type(const std::string &index) const;
-        void clear();
+        bool contains(const std::string &index) const;//Sees if a variable exists
+        std::string get_type(const std::string &index) const;//Gets the type of a variable
+        void clear();//Clears the file
     };
 
-} // namespace fsf
+} 
 
-#endif // FSF_H
+#endif 
